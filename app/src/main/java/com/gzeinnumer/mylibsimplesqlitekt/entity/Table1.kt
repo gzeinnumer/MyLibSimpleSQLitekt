@@ -7,7 +7,7 @@ import com.gzeinnumer.mylibsimplesqlite.typeData.*
 import com.gzeinnumer.mylibsimplesqlitekt.helper.GblVariabel
 
 @SQLiteTable(tableName = "table1")
-class Table1 : SQLiteLIB<Table1> {
+class Table1() : SQLiteLIB<Table1>() {
     @PrimaryKeyTypeData
     var id = 0
 
@@ -30,60 +30,86 @@ class Table1 : SQLiteLIB<Table1> {
     @JoinColumn(withTable = "table2", columnName = "name", alias = "table2_name")
     var table2_name: String? = null
 
-    constructor() {}
-    constructor(
-        id: Int,
-        name: String?,
-        rating: Double,
-        desc: String?,
-        flag_active: Int,
-        created_at: String?
-    ) {
-        this.id = id
-        this.name = name
-        this.rating = rating
-        this.desc = desc
-        this.flag_active = flag_active
-        this.created_at = created_at
-    }
-
-    fun insert(data: Table1): Boolean {
+    //INSERT INTO table1 (name, rating, desc, flag_active, created_at) VALUES ('Zein', '10.0.', 'Android Programmer', '1', '12-12-2020');
+    fun insert(): Boolean {
+        val data = Table1()
+        data.name = "Zein"
+        data.rating = 10.0
+        data.desc = "Android Programmer"
+        data.flag_active = 1
+        data.created_at = "12-12-2020"
         return insertData(Table1::class.java, GblVariabel.myDb, data)
     }
 
-    fun update(data: Table1): Boolean {
-        val condition = "id='500'" //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+    //UPDATE table1 SET name='Name Update', desc='Desc Update', flag_active='' WHERE id='1';
+    fun update(): Boolean {
+        //set your value to update
+        val data = Table1()
+        data.name= "Name Update"
+        data.desc ="Desc Update"
+        data.flag_active = 0
+
+        //no need to write WHERE, i will write it for you, just type your condition
+        val condition = "id='2000'" //for single condition
+        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
+        val fieldToUpdate = arrayOf(
+            "name",
+            "desc",
+            "flag_active"
+        ) // put all field that you want to update
         return updatedData(
             Table1::class.java,
             GblVariabel.myDb,
             data,
-            condition
+            condition,
+            *fieldToUpdate
         ) // return true/false
     }
 
+    //DELETE FROM table1 WHERE id='1';
     fun delete(): Boolean {
-        val condition = "id='500'" //for single condition
+        //no need to write WHERE, i will write it for you, just type your condition
+        val condition = "id='0'" //for single condition
         //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        //String condition = "1";                               //to delete all data
         return deleteData(Table1::class.java, GblVariabel.myDb, condition)
     }
 
+    //type 1 SELECT COUNT(*) FROM table1;
     fun count(): Int {
-//        String condition = "id='1'";
-//        return countData(Table1.class, GblVariabel.myDb, condition);
         return countData(Table1::class.java, GblVariabel.myDb)
     }
 
+    //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
+    fun count2(): Int {
+        //no need to write WHERE, i will write it for you, just type your condition
+        val condition = "id='1'" //for single condition
+        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        return countData(Table1::class.java, GblVariabel.myDb, condition)
+    }
+
+    //type 1 SElECT * FROM table1;
     fun read(): List<Table1> {
-//        String condition = "id='1'";
-//        return readData(Table1.class, GblVariabel.myDb, condition);
         return readData(Table1::class.java, GblVariabel.myDb)
+    }
+
+    //type 2 SELECT * FROM table1 WHERE flag_active='1';
+    fun read2(): List<Table1> {
+        //no need to write WHERE, i will write it for you, just type your condition
+        val condition = "id='1'" //for single condition
+        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        return readData(Table1::class.java, GblVariabel.myDb, condition)
     }
 
     fun query(): List<Table1> {
         val query =
             "SELECT table1.*, table2.name AS table2_name FROM table1 JOIN table2 ON table2.id_table1 = table1.id;"
         return queryData(Table1::class.java, GblVariabel.myDb, query)
+    }
+
+    fun queryResultUpdate(): Boolean {
+        val query = "UPDATE table1 SET flag_Active='2' where id='1'"
+        return queryResult(GblVariabel.myDb, query)
     }
 
 }
