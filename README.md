@@ -26,6 +26,8 @@ but there is a step that you should do.. what i should do?
   <img src="https://github.com/gzeinnumer/MyLibSQLiteExample/blob/master/preview/example1.JPG" width="400"/>
 </p>
 
+---
+
 ```
 Copyright 2020 M. Fadli Zein
 ```
