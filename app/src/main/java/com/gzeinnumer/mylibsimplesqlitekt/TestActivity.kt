@@ -33,20 +33,23 @@ class TestActivity : AppCompatActivity() {
 //        val count2 = table1.count2()
 //        Log.d(TAG, "onCreate5: $count2")
 
+//        val count3 = table1.queryCount()
+//        Log.d(TAG, "onCreate6: $count3")
+
 //        val read = table1.read()
-//        Log.d(TAG, "onCreate6: " + read[0].name)
-//        Log.d(TAG, "onCreate6: " + read.size)
+//        Log.d(TAG, "onCreate7: " + read[0].name)
+//        Log.d(TAG, "onCreate7: " + read.size)
 
 //        val read2 = table1.read2()
-//        Log.d(TAG, "onCreate7: " + read2[0].name)
-//        Log.d(TAG, "onCreate7: " + read2.size)
+//        Log.d(TAG, "onCreate8: " + read2[0].name)
+//        Log.d(TAG, "onCreate8: " + read2.size)
 
 //        val listQuery = table1.query()
-//        Log.d(TAG, "onCreate8: " + listQuery[0].name)
-//        Log.d(TAG, "onCreate8: " + listQuery[0].table2_name)
-//        Log.d(TAG, "onCreate8: " + listQuery.size);
+//        Log.d(TAG, "onCreate9: " + listQuery[0].name)
+//        Log.d(TAG, "onCreate9: " + listQuery[0].table2_name)
+//        Log.d(TAG, "onCreate9: " + listQuery.size)
 
-        val queryUpdate = table1.queryResultUpdate()
-        Log.d(TAG, "onCreate9: $queryUpdate")
+//        val queryUpdate = table1.queryResultUpdate()
+//        Log.d(TAG, "onCreate10: $queryUpdate")
     }
 }

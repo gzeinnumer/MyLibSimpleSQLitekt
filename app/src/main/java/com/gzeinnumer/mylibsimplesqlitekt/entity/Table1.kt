@@ -45,13 +45,11 @@ class Table1() : SQLiteLIB<Table1>() {
     fun update(): Boolean {
         //set your value to update
         val data = Table1()
-        data.name= "Name Update"
-        data.desc ="Desc Update"
+        data.name = "Name Update"
+        data.desc = "Desc Update"
         data.flag_active = 0
-
-        //no need to write WHERE, i will write it for you, just type your condition
-        val condition = "id='2000'" //for single condition
-        //String condition = "id='1' AND flag_Active='1'";      //for multi condition
+        val condition = "WHERE id='1'" //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";      //for multi condition
         val fieldToUpdate = arrayOf(
             "name",
             "desc",
@@ -62,15 +60,14 @@ class Table1() : SQLiteLIB<Table1>() {
             GblVariabel.myDb,
             data,
             condition,
-            *fieldToUpdate
+            fieldToUpdate
         ) // return true/false
     }
 
     //DELETE FROM table1 WHERE id='1';
     fun delete(): Boolean {
-        //no need to write WHERE, i will write it for you, just type your condition
-        val condition = "id='0'" //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        val condition = "WHERE id='1'" //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         //String condition = "1";                               //to delete all data
         return deleteData(Table1::class.java, GblVariabel.myDb, condition)
     }
@@ -82,10 +79,16 @@ class Table1() : SQLiteLIB<Table1>() {
 
     //type 2 SELECT COUNT(*) FROM table1 WHERE flag_Active='1';
     fun count2(): Int {
-        //no need to write WHERE, i will write it for you, just type your condition
-        val condition = "id='1'" //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        val condition = "WHERE flag_active='1'" //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         return countData(Table1::class.java, GblVariabel.myDb, condition)
+    }
+
+    //type 3 Your Custom Query
+    // SELECT COUNT(id) FROM table1;
+    fun queryCount(): Int {
+        val query = "SELECT COUNT(id) FROM table1;"
+        return queryCount(Table1::class.java, GblVariabel.myDb, query)
     }
 
     //type 1 SElECT * FROM table1;
@@ -95,9 +98,8 @@ class Table1() : SQLiteLIB<Table1>() {
 
     //type 2 SELECT * FROM table1 WHERE flag_active='1';
     fun read2(): List<Table1> {
-        //no need to write WHERE, i will write it for you, just type your condition
-        val condition = "id='1'" //for single condition
-        //String condition = "id='1' AND flag_Active='1'";    //for multi condition
+        val condition = "WHERE flag_active='1'" //for single condition
+        //String condition = "WHERE id='1' AND flag_Active='1'";    //for multi condition
         return readData(Table1::class.java, GblVariabel.myDb, condition)
     }
 
@@ -108,8 +110,8 @@ class Table1() : SQLiteLIB<Table1>() {
     }
 
     fun queryResultUpdate(): Boolean {
-        val query = "UPDATE table1 SET flag_Active='2' where id='1'"
-        return queryResult(GblVariabel.myDb, query)
+        val query = "UPDATE table1 SET flag_Active='2' WHERE id='1'"
+        return queryResult(Table1::class.java, GblVariabel.myDb, query)
     }
 
 }
