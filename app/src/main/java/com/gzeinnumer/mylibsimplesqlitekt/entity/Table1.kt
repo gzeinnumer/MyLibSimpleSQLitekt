@@ -1,9 +1,9 @@
 package com.gzeinnumer.mylibsimplesqlitekt.entity
 
-import com.gzeinnumer.mylibsimplesqlite.SQLiteLIB
-import com.gzeinnumer.mylibsimplesqlite.struck.JoinColumn
-import com.gzeinnumer.mylibsimplesqlite.struck.SQLiteTable
-import com.gzeinnumer.mylibsimplesqlite.typeData.*
+import com.gzeinnumer.esc.SQLiteLIB
+import com.gzeinnumer.esc.struck.JoinColumn
+import com.gzeinnumer.esc.struck.SQLiteTable
+import com.gzeinnumer.esc.typeData.*
 import com.gzeinnumer.mylibsimplesqlitekt.helper.GblVariabel
 
 @SQLiteTable(tableName = "table1")

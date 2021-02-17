@@ -1,10 +1,11 @@
 package com.gzeinnumer.mylibsimplesqlitekt.entity
 
-import com.gzeinnumer.mylibsimplesqlite.SQLiteLIB
-import com.gzeinnumer.mylibsimplesqlite.struck.SQLiteTable
-import com.gzeinnumer.mylibsimplesqlite.typeData.IntegerTypeData
-import com.gzeinnumer.mylibsimplesqlite.typeData.PrimaryKeyTypeData
-import com.gzeinnumer.mylibsimplesqlite.typeData.VarcharTypeData
+import com.gzeinnumer.esc.SQLiteLIB
+import com.gzeinnumer.esc.struck.SQLiteTable
+import com.gzeinnumer.esc.typeData.IntegerTypeData
+import com.gzeinnumer.esc.typeData.PrimaryKeyTypeData
+import com.gzeinnumer.esc.typeData.VarcharTypeData
+
 
 @SQLiteTable(tableName = "table2")
 class Table2 : SQLiteLIB<Table2> {
